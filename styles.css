@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+}
+body{
+    background-color: #D79FE6;
+}
+header{
+    height: 50px;
+    background-color: #910EB4;
+    
+}
+h3{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem ;
+    font-weight: 100;
+    padding: 0.5% 2%;
+}
+.formContainer{
+    background-color: #ffff;
+    width: 60%;
+    margin: 3% auto;
+    height: 160px;
+    border-radius: 128px 128px 128px 128px;
+    -moz-border-radius: 128px 128px 128px 128px;
+    -webkit-border-radius: 128px 128px 128px 128px;
+    border: 0px solid #000000;
+}
+h1{
+    font-size: 6rem;
+     text-align: center;
+}
+input{
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 5%;
+   
+}
+button{
+    width: 10%;
+    background-color: #910EB4;
+    color: #ffff;
+    border: 2px solid #910EB4;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #ffff;
+    color: #910EB4;
+
+}
+
+input,button{
+    height: 30px;
+    text-align: center;
+    font-size: 1.75rem;
+    
+}
+.flexContainer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+}
+.flexContainer section{
+    width: 25%;  
+    background-color: #ffff;
+    height: 400px;
+    border-radius: 34px 34px 34px 34px;
+    -moz-border-radius: 34px 34px 34px 34px;
+    -webkit-border-radius: 34px 34px 34px 34px;
+    border: 0px solid #000000;
+}
+
+.flexContainer section .heading{
+    background-color: #910EB4;
+    border-radius: 68px 68px 68px 68px;
+    -moz-border-radius: 68px 68px 68px 68px;
+    -webkit-border-radius: 68px 68px 68px 68px;
+    border: 0px solid #000000;
+    color: #000000;
+    font-size: 4rem;
+    width: 90%;
+    height: 95px;
+    margin: 5% auto;
+}
+.flexContainer section .heading h2 {
+    font-size: 3.5rem;
+    text-align: center;
+    padding-top: 5%;
+}
+ul{
+    list-style: none;
+    margin-left: 7%;
+}
+li{
+    font-size: 1.75rem;
+    margin: 4%;
+}
