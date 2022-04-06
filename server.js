@@ -1,42 +1,41 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const { ConnectionCheckedInEvent } = require('mongodb');
 const app = express();
-const PORT = 3000;
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient
+const PORT = 3000
+require('dotenv').config()
 
-app.set('view engine', 'ejs')
+let db,
+    dbConnectionStr = process.env.DB_STRING,
+    dbName = 'task'
 
-MongoClient.connect('mongodb+srv://Agnieszka:Agnieszka2001@cluster0.fgje5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
-.then(client => {
-    console.log('Connected to Database')
-    const db = client.db('toDoList')
-    const taskCollection = db.collection('tasks')
+    MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true})
+        .then(client => {
+            console.log(`Connected to ${dbName} Database`)
+            db = client.db(dbName)
+        })
 
-app.use(bodyParser.urlencoded({ extended: true }))
+        app.set('view engine', 'ejs')
+        app.use(express.static('public'))
+        app.use(express.urlencoded({extended: true}))
+        app.use(express.json())
 
-app.listen(process.env.PORT || PORT, () => {
-    console.log(`Listening on ${PORT} port`)
-})
+        app.get('/', (request, response) => {
+            db.collection('tasks').find().toArray()
+            .then(data => {
+                response.render('index.ejs', {info: data})
+            })
+            .catch(error => console.error(error))
+        })
 
-app.get('/', (req,res) => {
-    res.sendFile(__dirname + '/index.html')
-     db.collection('tasks').find().toArray()
-    .then(results => {
-    res.render('index.ejs', { tasks: results})
-    })
-    .catch(error => console.error(error))
-    
-    })
-
-app.post('/addTask', (req,res) => {
-    taskCollection.insertOne(req.body)
-    .then(result => {
-        res.redirect('/')
-    })
-    .catch(error => console.error(error))
-
-  
-  })
-})
-   
-
+        app.post('/addTask', (request,response) => {
+            db.collection('tasks').insertOne({task: request.body.newTask})
+            .then(result => {
+                console.log('Task added')
+                response.redirect('/')
+            })
+            .catch(error => console.error(error))
+        }) 
+        app.listen(process.env.PORT || PORT, ()=>{
+            console.log(`Server running on port ${PORT}`)
+        })

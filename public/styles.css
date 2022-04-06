@@ -89,7 +89,7 @@ input,button{
     margin: 5% auto;
 }
 .flexContainer section .heading h2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     text-align: center;
     padding-top: 5%;
 }
@@ -98,6 +98,13 @@ ul{
     margin-left: 7%;
 }
 li{
-    font-size: 1.75rem;
+    font-size: 2em;
     margin: 4%;
+    height: 20px;
+}
+li img{
+    width: 20px;
+}
+li span{
+    font-size: 2rem;
 }
