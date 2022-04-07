@@ -36,6 +36,17 @@ let db,
             })
             .catch(error => console.error(error))
         }) 
+        app.delete('/deleteTask', (request, response) => {
+            db.collection('tasks').deleteOne({taskName: request.body.taskNameS})
+            .then(result => {
+                console.log('Task deleted')
+                response.json('Task deleted')
+            })
+            .catch(error => console.error(error))
+        })
+
+
+
         app.listen(process.env.PORT || PORT, ()=>{
             console.log(`Server running on port ${PORT}`)
         })
