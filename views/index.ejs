@@ -29,33 +29,21 @@
          </section>
             <ul class="toDo">
                 <% for(let i=0; i < info.length; i++) {%>
-                    <li class="taskToDo">
-                        <span><%= info[i].task %></span>
-                        <span><img src="bin.png" class="bin"></span>
+                    <li class="item">
+                        <% if(info[i].completed === true) {%>
+                            <span class='completed'><%= info[i].task %></span>
+                        <% }else{ %>
+                            <span><%= info[i].task %></span>
+                        <% } %>    
+                        <span><img src='bin.png' class="bin"></span>
                     </li>
                 <% } %>
             </ul>
     </section>
     <section>
-        <section class="heading">
-            <h2>Work in progress</h2>
-        </section>
-        <ul class="WiP">
-            <li>Do homework</li>
-            <li>Do homework</li>
-            <li>Do homework</li>
-        </ul>
+         <h2 id="left2Do">Tasks left to do: <%= left %></h2>
     </section>
-    <section>
-        <section class="heading">
-            <h2>Already done</h2>
-        </section>
-        <ul class="done">
-            <li>Do homework</li>
-            <li>Do homework</li>
-            <li>Do homework</li>
-        </ul>
-    </section>
+    
 </section>
 <script src="main.js"></script>
 </body>
